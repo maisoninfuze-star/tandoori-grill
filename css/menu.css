@@ -1,0 +1,48 @@
+/* =========================================================
+   TANDOOR ET GRILLE — Menu page (read-only, editorial)
+   ========================================================= */
+.mhead{padding:calc(clamp(80px,12vh,140px) + 40px) 0 clamp(30px,5vw,60px);background:var(--paper)}
+.mhead__title{font-size:clamp(3.2rem,9vw,7rem);margin:.12em 0 .34em}
+.mhead .btn{margin-top:8px}
+
+/* category nav */
+.mcats{position:sticky;top:0;z-index:40;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
+  padding:14px var(--pad);background:rgba(241,236,227,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(23,19,16,.1)}
+.mcats::-webkit-scrollbar{display:none}
+.mcat{flex:0 0 auto;font-family:var(--f-sans);font-weight:500;font-size:.78rem;letter-spacing:.03em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap;padding:.4em .2em;transition:color .3s;cursor:pointer}
+.mcat:hover{color:var(--ember)}
+
+/* legend */
+.mbody{padding-block:clamp(34px,5vw,60px) clamp(60px,9vw,110px)}
+.mlegend{display:flex;flex-wrap:wrap;gap:22px;padding-bottom:28px;margin-bottom:20px;
+  border-bottom:1px solid rgba(23,19,16,.12);font-size:.82rem;color:var(--muted)}
+.mlegend span{display:inline-flex;align-items:center;gap:7px}
+.mlegend em{font-style:normal}
+.m-veg{color:var(--brass);font-style:normal}
+.m-spice{color:var(--ember);font-style:normal}
+.m-badges{display:inline-flex;gap:5px;font-size:.82em;vertical-align:middle}
+
+/* section */
+.msec{padding-block:clamp(40px,6vw,72px);border-top:1px solid rgba(23,19,16,.1)}
+.msec:first-of-type{border-top:0}
+.msec__head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+.msec__head h2{font-size:clamp(2rem,4.4vw,3.6rem)}
+.msec__note{color:var(--muted);font-style:italic;margin-bottom:26px;max-width:60ch}
+
+/* items — two columns on wide screens */
+.msec__items{display:grid;grid-template-columns:1fr;gap:2px 60px}
+@media(min-width:820px){.msec__items{grid-template-columns:1fr 1fr}}
+.mrow{display:flex;gap:18px;align-items:baseline;justify-content:space-between;
+  padding:18px 0;border-bottom:1px solid rgba(23,19,16,.08)}
+.mrow__l{min-width:0}
+.mrow__l h3{font-family:var(--f-serif);font-weight:500;font-size:1.18rem;line-height:1.25;color:var(--ink)}
+.mrow__l p{font-size:.9rem;color:var(--muted);line-height:1.5;margin-top:4px;max-width:52ch}
+.mrow__p{flex:0 0 auto;font-family:var(--f-serif);font-weight:500;font-size:1.1rem;color:var(--ember);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* order CTA */
+.mcta{background:var(--ink);color:var(--bone);padding-block:clamp(64px,10vw,120px);text-align:center}
+.mcta__inner h2{font-size:clamp(2.4rem,6vw,4.8rem);color:var(--bone);margin-bottom:30px}
+.mcta__inner h2 em{color:var(--brass-soft)}

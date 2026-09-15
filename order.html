@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Order Pickup — Tandoor &amp; Grille · Dollard-des-Ormeaux</title>
+<meta name="description" content="Order Tandoor et Grille for pickup — live-fire North Indian & Pakistani in Dollard-des-Ormeaux. Full menu, add to cart, send your order in seconds." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..700&family=Fraunces:ital,opsz,wght@1,9..144,400..600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css?v=2" />
+<link rel="stylesheet" href="css/order.css?v=3" />
+</head>
+<body class="order-body">
+
+<!-- ===== ORDER HEADER ===== -->
+<header class="ohead">
+  <a href="index.html" class="ohead__back" aria-label="Back to site">
+    <span class="ohead__arrow">←</span>
+    <span class="nav__monogram">T&amp;G</span>
+  </a>
+  <div class="ohead__title">
+    <strong data-en="Order · Pickup" data-fr="Commander · À emporter">Order · Pickup</strong>
+    <span data-en="Dollard-des-Ormeaux · 11:00–22:00" data-fr="Dollard-des-Ormeaux · 11 h – 22 h">Dollard-des-Ormeaux · 11:00–22:00</span>
+  </div>
+  <div class="ohead__right">
+    <button class="lang" id="langToggle" aria-label="Switch language">
+      <span class="lang__en">EN</span><span class="lang__sep">/</span><span class="lang__fr">FR</span>
+    </button>
+    <button class="ohead__cart" id="cartBtn" aria-label="Cart">
+      <span class="ohead__cart-ico">🛒</span>
+      <span class="ohead__cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== CATEGORY NAV ===== -->
+<nav class="ocats" id="ocats" aria-label="Menu categories"></nav>
+
+<!-- ===== MENU ===== -->
+<main class="omenu" id="omenu">
+  <div class="omenu__intro">
+    <h1 class="omenu__h1" data-en="The full menu" data-fr="Le menu complet">The full menu</h1>
+    <p class="omenu__note" data-en="Halal · cooked to order over live fire, with spices we grind ourselves." data-fr="Halal · cuisiné à la commande au feu vif, avec des épices moulues maison.">Halal · cooked to order over live fire, with spices we grind ourselves.</p>
+    <div class="omenu__legend">
+      <span><i class="lg lg--veg"></i> <em data-en="Vegetarian" data-fr="Végétarien">Vegetarian</em></span>
+      <span><i class="lg lg--spice"></i> <em data-en="Spicy" data-fr="Épicé">Spicy</em></span>
+      <span data-en="Prices before tax" data-fr="Prix avant taxes">Prices before tax</span>
+    </div>
+  </div>
+  <div id="menuSections"></div>
+</main>
+
+<!-- ===== CART DRAWER ===== -->
+<div class="cart-scrim" id="cartScrim" hidden></div>
+<aside class="cart" id="cart" aria-label="Your order" aria-hidden="true">
+  <div class="cart__head">
+    <h2 data-en="Your order" data-fr="Votre commande">Your order</h2>
+    <button class="cart__close" id="cartClose" aria-label="Close">✕</button>
+  </div>
+  <div class="cart__items" id="cartItems"></div>
+  <div class="cart__empty" id="cartEmpty" data-en="Your cart is empty — add something delicious." data-fr="Votre panier est vide — ajoutez quelque chose de délicieux.">Your cart is empty — add something delicious.</div>
+
+  <div class="cart__foot" id="cartFoot" hidden>
+    <div class="acct-bar" id="acctBar" hidden></div>
+    <div class="cart__totals">
+      <div><span data-en="Subtotal" data-fr="Sous-total">Subtotal</span><b id="tSub">$0.00</b></div>
+      <div><span id="taxLabel">Tax (14.975%)</span><b id="tTax">$0.00</b></div>
+      <div class="cart__grand"><span data-en="Total" data-fr="Total">Total</span><b id="tTotal">$0.00</b></div>
+    </div>
+
+    <form class="cart__form" id="cartForm" autocomplete="on">
+      <label>
+        <span data-en="Name" data-fr="Nom">Name</span>
+        <input type="text" id="fName" required placeholder="Your name" />
+      </label>
+      <label>
+        <span data-en="Phone" data-fr="Téléphone">Phone</span>
+        <input type="tel" id="fPhone" required placeholder="(514) 000-0000" />
+      </label>
+      <label>
+        <span data-en="Pickup time" data-fr="Heure de collecte">Pickup time</span>
+        <input type="text" id="fTime" placeholder="ASAP" value="ASAP" />
+      </label>
+      <label>
+        <span data-en="Notes (allergies, spice…)" data-fr="Notes (allergies, épices…)">Notes (allergies, spice…)</span>
+        <textarea id="fNotes" rows="2" placeholder="Optional"></textarea>
+      </label>
+    </form>
+
+    <button class="btn btn--big cart__send" id="placeOrder" data-en="Place order" data-fr="Passer la commande">Place order</button>
+    <div class="cart__alt">
+      <a href="tel:5146834878" data-en="Prefer to call? (514) 683-4878" data-fr="Préférez appeler ? (514) 683-4878">Prefer to call? (514) 683-4878</a>
+    </div>
+    <p class="cart__disclaim" data-en="Pickup only. Your order goes straight to the kitchen — we'll confirm the time. Payment on pickup." data-fr="À emporter seulement. Votre commande arrive directement en cuisine — on confirme l'heure. Paiement à la collecte.">Pickup only. Your order goes straight to the kitchen — we'll confirm the time. Payment on pickup.</p>
+  </div>
+
+  <!-- success state -->
+  <div class="cart__done" id="cartDone" hidden>
+    <div class="cart__done-check" aria-hidden="true">
+      <svg viewBox="0 0 52 52" width="64" height="64"><circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M15 27l7 7 15-15"/></svg>
+    </div>
+    <h3 data-en="Order received!" data-fr="Commande reçue !">Order received!</h3>
+    <p class="cart__done-num">#<span id="doneNum">—</span></p>
+    <p class="cart__done-msg" id="doneMsg" data-en="It's on the kitchen screen now. We'll call you to confirm your pickup time." data-fr="Elle est déjà sur l'écran de la cuisine. On vous appelle pour confirmer l'heure de collecte.">It's on the kitchen screen now. We'll call you to confirm your pickup time.</p>
+    <button class="btn btn--big" id="doneClose" data-en="Start a new order" data-fr="Nouvelle commande">Start a new order</button>
+  </div>
+</aside>
+
+<!-- ===== AUTH MODAL ===== -->
+<div class="auth-scrim" id="authScrim" hidden></div>
+<div class="auth" id="authModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="auth__close" id="authClose" aria-label="Close">✕</button>
+  <div class="auth__head">
+    <h2 id="authTitle" data-en="Sign in to order" data-fr="Connexion pour commander">Sign in to order</h2>
+    <p id="authSub" data-en="Create a free account so we can send your order to the kitchen and keep your details for next time." data-fr="Créez un compte gratuit pour envoyer votre commande en cuisine et garder vos infos pour la prochaine fois.">Create a free account so we can send your order to the kitchen and keep your details for next time.</p>
+  </div>
+  <div class="auth__tabs">
+    <button class="auth__tab is-active" data-mode="signup" data-en="Create account" data-fr="Créer un compte">Create account</button>
+    <button class="auth__tab" data-mode="login" data-en="Sign in" data-fr="Se connecter">Sign in</button>
+  </div>
+  <form class="auth__form" id="authForm" autocomplete="on">
+    <label class="af-signup"><span data-en="Name" data-fr="Nom">Name</span>
+      <input type="text" id="auName" autocomplete="name" placeholder="Your name" /></label>
+    <label><span data-en="Email" data-fr="Courriel">Email</span>
+      <input type="email" id="auEmail" autocomplete="email" required placeholder="you@email.com" /></label>
+    <label class="af-signup"><span data-en="Phone" data-fr="Téléphone">Phone</span>
+      <input type="tel" id="auPhone" autocomplete="tel" placeholder="(514) 000-0000" /></label>
+    <label><span data-en="Password" data-fr="Mot de passe">Password</span>
+      <input type="password" id="auPass" autocomplete="current-password" required placeholder="••••••••" /></label>
+    <p class="auth__err" id="authErr" hidden></p>
+    <button type="submit" class="btn btn--big auth__submit" id="authSubmit" data-en="Create account &amp; continue" data-fr="Créer le compte &amp; continuer">Create account &amp; continue</button>
+    <p class="auth__fine af-signup" data-en="By creating an account you agree we may email you order updates and the occasional offer." data-fr="En créant un compte, vous acceptez de recevoir des courriels de suivi de commande et occasionnellement des offres.">By creating an account you agree we may email you order updates and the occasional offer.</p>
+  </form>
+</div>
+
+<!-- ===== ADD-TO-CART TOAST ===== -->
+<div class="toast" id="toast" hidden></div>
+
+<script src="js/menu-data.js?v=2"></script>
+<script src="js/auth.js?v=3"></script>
+<script src="js/order.js?v=5"></script>
+</body>
+</html>

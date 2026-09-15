@@ -1,0 +1,48 @@
+/* =========================================================
+   TANDOOR ET GRILLE — Catering / Party Hall page
+   ========================================================= */
+
+/* HERO */
+.chero{position:relative;height:88svh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden}
+.chero__media{position:absolute;inset:0}
+.chero__media video{width:100%;height:100%;object-fit:cover}
+.chero__grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,11,8,.86),rgba(15,11,8,.3) 45%,rgba(15,11,8,.4))}
+.chero__content{position:relative;z-index:2;color:var(--bone);padding-bottom:clamp(56px,8vh,110px);width:100%}
+.chero__title{font-size:clamp(3rem,8.5vw,7.5rem);line-height:.94;color:var(--bone);margin:.16em 0 .3em;max-width:13ch}
+.chero__title em{font-style:italic;color:var(--brass-soft)}
+.chero__lede{font-size:clamp(1.05rem,1.5vw,1.35rem);line-height:1.55;color:rgba(241,236,227,.9);max-width:46ch}
+.chero__cta{margin-top:32px}
+
+/* CAPACITY STRIP */
+.cap{background:var(--ink);color:var(--bone)}
+.cap__row{display:grid;grid-template-columns:1fr 1fr;gap:34px 24px}
+@media(min-width:820px){.cap__row{grid-template-columns:repeat(4,1fr)}}
+.cap__item{text-align:center}
+.cap__item b{font-family:var(--f-serif);font-weight:500;font-size:clamp(2.4rem,4vw,3.4rem);display:block;line-height:1;color:var(--brass-soft)}
+.cap__item span{display:block;margin-top:10px;font-size:.74rem;text-transform:uppercase;letter-spacing:var(--track);color:rgba(241,236,227,.7)}
+
+/* EVENT TYPES */
+.events__head{font-size:clamp(2.4rem,6vw,5.2rem);margin:.2em 0 clamp(28px,4vw,50px)}
+.events__head em{color:var(--ember)}
+.events__list{list-style:none;display:flex;flex-wrap:wrap;gap:14px}
+.events__list li{font-family:var(--f-serif);font-size:clamp(1.2rem,2.2vw,1.9rem);color:var(--ink);
+  padding:.4em 1em;border:1px solid rgba(23,19,16,.18);border-radius:100px;transition:.35s var(--ease)}
+.events__list li:hover{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+
+/* SERVICES */
+.services{background:var(--paper)}
+.services__grid{display:grid;gap:clamp(34px,5vw,64px)}
+@media(min-width:860px){.services__grid{grid-template-columns:1fr 1fr}}
+.svc__media{aspect-ratio:4/5;border-radius:4px;margin-bottom:26px}
+.svc__media video{width:100%;height:100%;object-fit:cover}
+.svc__body .eyebrow{color:var(--ember)}
+.svc__body h3{font-size:clamp(1.8rem,3vw,2.6rem);margin:.2em 0 .4em}
+.svc__body p{color:var(--char);line-height:1.62;max-width:46ch}
+
+/* CTA BAND */
+.cband{background:var(--ink);color:var(--bone);padding-block:clamp(72px,11vw,140px)}
+.cband__inner{text-align:center;max-width:760px;margin:0 auto}
+.cband h2{font-size:clamp(2.6rem,6vw,5.4rem);color:var(--bone)}
+.cband h2 em{color:var(--brass-soft)}
+.cband p{color:rgba(241,236,227,.82);margin:22px auto 34px;max-width:44ch;line-height:1.6;font-size:clamp(1.02rem,1.4vw,1.2rem)}
+.cband__cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
