@@ -2,7 +2,15 @@
    TANDOOR ET GRILLE — static server + order backend
    Vanilla Node (no deps). Serves the site AND provides the
    order API + live SSE stream that powers the dashboard.
-   Run:  node server.mjs   (PORT env optional, default 8210)
+   Run (from the site root):  node backend/server.mjs
+   (PORT env optional, default 8210)
+
+   NOTE: this lives in backend/ deliberately — the site itself is
+   deployed to Vercel as a pure static site, and a server file at
+   the repo root makes Vercel misdetect the project as a Node app.
+   This backend needs an always-on Node host (Render/Railway/Fly),
+   not Vercel, because it keeps orders/customers on local disk and
+   holds long-lived SSE connections for the kitchen dashboard.
    ========================================================= */
 import http from 'node:http';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
@@ -12,7 +20,8 @@ import { fileURLToPath } from 'node:url';
 import { EventEmitter } from 'node:events';
 import crypto from 'node:crypto';
 
-const ROOT = fileURLToPath(new URL('.', import.meta.url));
+// Site root is the parent of backend/ — static files and .data/ live there.
+const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const PORT = process.env.PORT || 8210;
 const OWNER_PASS = process.env.OWNER_PASS || 'tandoor2024';
 // Online ordering is temporarily disabled (menu/site still being finalized).
@@ -292,6 +301,11 @@ async function serveStatic(req, res, url) {
   if (p === '/dashboard') p = '/dashboard.html';
   if (p === '/hall') p = '/hall.html';
   const safe = normalize(p).replace(/^(\.\.[/\\])+/, '');
+  // Never serve the backend source, the private data store, or any dotfile
+  // (.data/ holds the auth secret + customer records).
+  if (/^[/\\]?(backend|\.data)([/\\]|$)/.test(safe) || /(^|[/\\])\.[^/\\]+/.test(safe)) {
+    return send(res, 404, 'Not found');
+  }
   const file = join(ROOT, safe);
   if (!file.startsWith(ROOT)) return send(res, 403, 'Forbidden');
   try {
